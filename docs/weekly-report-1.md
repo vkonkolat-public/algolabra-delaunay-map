@@ -1,8 +1,8 @@
 # Weekly report 1
 
 ## Actions taken
--looked into various algorithms preliminarily and settled on working with delaunay triangulation, voronoi diagrams and MST (Minimum Spanning Tree)
--familiarised myself with new AI project creation capabilities of GitHub
+- looked into various algorithms preliminarily and settled on working with delaunay triangulation, voronoi diagrams and MST (Minimum Spanning Tree)
+- familiarised myself with new AI project creation capabilities of GitHub
 
 ---
 

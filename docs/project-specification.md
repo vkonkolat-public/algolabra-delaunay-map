@@ -8,7 +8,8 @@ Primary implementation language:
 
 ## 2. Problem being solved
 
-The project solves the problem of generating a **small, viewable procedural map** for a simulation or game.
+The project solves the problem of generating a **small, viewable procedural map** for a simulation or game. 
+Delaunay triangulation using Bowyer-Watson algorithm and it's derivative structure answer the question **How to generate a map that doesn't produce areas and vertices densely populated with edges?**
 
 The map should look coherent by structure, devoid of sliver triangles or other strange artefacts while still being generated from input parameters. 
 The generated output is based on geometric partitioning and graph algorithms:
@@ -23,12 +24,11 @@ The generated output is based on geometric partitioning and graph algorithms:
 Planned input parameters:
 
 1. **Map size** (width and height with possible simulated height by voronoi chunk)
-2. **Number of Voronoi chunks** (number of seed points / regions)
+2. **Number of Voronoi chunks** (number of seed points / regions) // ALTERNATIVELY // **Number/coordinates of input points**
 
 How inputs are used:
 
 - Map size defines the 2D bounds where points are generated.
-- Number of chunks defines how many seed points are sampled.
 - Seed points are triangulated with Delaunay triangulation.
 - Voronoi regions are derived from those points (or from the triangulation dual).
 - A graph is formed from neighboring points/regions and an MST is computed to ensure connected structure for traversal/roads/rivers or similar map features.
@@ -37,7 +37,7 @@ How inputs are used:
 
 ### Algorithms
 
-- **Delaunay triangulation** (core geometric structure)
+- **Delaunay triangulation using Bowyer-Watson algorithm** (core geometric structure)
 - **Voronoi diagram construction** (region partitioning)
 - **Minimum Spanning Tree** (Kruskal or Prim on region-neighbor graph)
 
@@ -67,6 +67,7 @@ Let \(n\) be the number of Voronoi chunks (seed points).
 - For planar Delaunay graphs, number of edges is linear (\(E = O(n)\)).
 - Kruskal: \(O(E \log E) = O(n \log n)\)
 - Prim (binary heap): \(O(E \log V) = O(n \log n)\)
+- TODO: Decide on weighted edges
 
 ### Overall target
 
@@ -80,7 +81,11 @@ The core of this project is the **algorithmic generation pipeline**:
 1. generate points inside map bounds,
 2. build Delaunay triangulation,
 3. derive Voronoi regions,
-4. build and process the neighbor graph with MST.
+4. build and process the neighbor graph with MST
+
+As an additional step
+
+5. create a visual representation and simulation using it
 
 
 ## 7. Planned sources
