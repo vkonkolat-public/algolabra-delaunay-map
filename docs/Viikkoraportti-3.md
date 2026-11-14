@@ -45,3 +45,4 @@ Tämän viikon kehitystyötä rajoittivat huono olo ja lievä sairastuminen.
 
 
 ## Ajankäyttö
+- Noin kuusi tuntia. Tunti lähteiden etsimiseen, tunti teorian kertaamista, kolme tuntia koodin kirjoittamista ja tunti dokumentaatiota.
