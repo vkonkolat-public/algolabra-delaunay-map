@@ -1,6 +1,10 @@
-#import math
+#stdlib imports
 import random
 import matplotlib.pyplot as plt
+
+#local imports
+import triangulate
+from konkomesh import KonkoMesh
 
 #TODO: Selvitä oliko kommentointi englanniksi or in finnish
 #TODO: Mieti rajoja sekä liukulukujen osalta että muiden arvojen osalta. Superkolmiot, pisteiden määrä, jne.
@@ -37,37 +41,6 @@ import matplotlib.pyplot as plt
 
 # All the elegant solutions I've looked up use flat arrays and pointer arithmetic
 # TODO: Implement a more elegant solution with half-edges and a proper data structure for the mesh
-class KonkoMesh:
-    def __init__(self, points: list[tuple[float, float]]):
-        self.vertices = points  # Lista pisteistä (vertices)
-        self.edges = []     # Lista särmistä (edges) TODO: Muuta puolittaisiksi särmiksi (half-edges)
-        self.triangles = []  # Lista kolmioista (triangles)
-        pass
-    
-    def add_vertex(self, vertex: tuple[float, float]) -> None:
-        self.vertices.append(vertex)
-
-    def get_vertices(self) -> list[tuple[float, float]]:
-        return self.vertices
-
-    def add_edge(self, edge: tuple[int, int]) -> None:
-        self.edges.append(edge)
-
-    def get_edges(self) -> list[tuple[int, int]]:
-        return self.edges
-
-    #Tässä taitaa tulla oleelliseksi se myötäpäivään/vastapäivään aspekti, jos halutaan half-edget
-    def add_triangle(self, triangle: tuple[int, int, int]) -> None:
-        self.triangles.append(triangle)
-        self.add_edge((triangle[0], triangle[1]))
-        self.add_edge((triangle[1], triangle[2]))
-        self.add_edge((triangle[2], triangle[0]))
-    
-    def get_triangles(self) -> list[tuple[int, int, int]]:
-        return self.triangles
-
-    def __str__(self) -> str:
-        return f"Vertices: {self.vertices}\nEdges: {self.edges}\nTriangles: {self.triangles}"
 
 # Technically this must hold up to 100 000 points.... plenty of work ahead
 def create_test_points(num_points: int, width: int, height: int) -> list[tuple[float, float]]:

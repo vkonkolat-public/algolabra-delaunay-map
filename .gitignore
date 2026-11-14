@@ -172,7 +172,6 @@ venv.bak/
 # mypy
 .mypy_cache/
 .dmypy.json
-dmypy.json
 
 # Pyre type checker
 .pyre/
@@ -221,4 +220,3 @@ __marimo__/
 
 # MyStuff
 dev/
-docs/uusia.md

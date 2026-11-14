@@ -15,25 +15,24 @@ Pääohjelma saa syötteeksi tai sen avulla valitaan joukko pisteitä.
 
 -Pääohjelma
 |
-|-Visualisoija
 |
-|-Bowyer-Watson algoritmi
+|-Bowyer-Watson algoritmi---------------------\
 |
-|-Bowyer-Watsonin tulos Voronoi-muuttajaan
+|-Bowyer-Watsonin tulos Voronoi-muuttajaan-----|-- Visualisoija
 |
-|-MST muodostaminen (Prim tai Kruskal)
+|-MST muodostaminen (Prim tai Kruskal)-------/
 
 ## Laajojen kielimallien käyttö
--Dokumentaation muotoilussa, varsinkin aika- ja tilavaatimuksien osalta (tarkistuksen mukaan täsmää wikipedian kanssa, testeistä lisää myöhemmin)
--suunnittelussa ja tiedonhaussa 
-
+- Dokumentaation muotoilussa, varsinkin aika- ja tilavaatimuksien osalta (tarkistuksen mukaan täsmää wikipedian kanssa, testeistä lisää myöhemmin)
+- suunnittelussa ja tiedonhaussa 
+- gpt-6-luna mallia käyetetty roadmapissa
 ## Testausvaihe
--matplotlib tai vastaavaa välittömän visualisaation käyttöön ottamiseen oman käyttöliittymän puuttuessa
--MATLAB lisenssi ja sen delaunay-algoritmi verrokkina ja luotettavana lopputuloksen tarkistajana
+- matplotlib tai vastaavaa välittömän visualisaation käyttöön ottamiseen oman käyttöliittymän puuttuessa
+- MATLAB lisenssi ja sen delaunay-algoritmi verrokkina ja luotettavana lopputuloksen tarkistajana
 
 ## Testilaajennukset
--Matlabin python-moduuli käyttöön testien sisällä
--Oman algoritmin ja matlabin delaunay-algoritmin suorituskyvyn ja jalanjälkien vertailu
+- Matlabin python-moduuli käyttöön testien sisällä
+- Oman algoritmin ja matlabin delaunay-algoritmin suorituskyvyn ja jalanjälkien vertailu
 
 ## Lähteet
 Kaiva sen kirjan nimi Helkasta

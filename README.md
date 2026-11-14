@@ -1,2 +1,2 @@
 # algolabra-delaunay-map
-Aineopintojen harjoitustyö repositorio
+Aineopintojen harjoitustyö-repositorio

@@ -96,3 +96,7 @@ Lee, D. & Schachter, B.. (1980).
 Two algorithms for constructing a Delaunay triangulation. International Journal of Computer & Information Sciences. 9. 219-242. 10.1007/BF00977785. 
 
 Or some available online resource to build the delaunay triangulation without resorting to existing libraries.
+
+[https://people.csail.mit.edu/indyk/6.838-old/handouts/lec9.pdf] turned out to be a good lightweight yet robust theoretical backing
+The mit.edu should guarantee it is credible enough despite being an online source
+[https://ianthehenry.com/posts/delaunay/] was a true breakthrough find. It more or less handholds the whole process despite using a different method
