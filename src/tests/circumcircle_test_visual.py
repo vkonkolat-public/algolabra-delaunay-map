@@ -1,9 +1,11 @@
-from konkomesh import KonkoMesh
-from triangulate import is_point_in_circumcircle
 from matplotlib import pyplot as plt
 from math import hypot
 import random
 import time
+
+# Local imports
+from src.konkomesh import KonkoMesh
+from src.triangulate import is_point_in_circumcircle
 
 # Let us visualise a simple example of a triangle and it's circumcircle, and a randomly generated point to see 
 # if it is inside the circumcircle or not.

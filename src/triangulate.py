@@ -15,6 +15,17 @@
 #     else:
 #         return 0  # Collinear
 
+def check_degeneracy(a:tuple[float, float], b:tuple[float, float], c:tuple[float, float]):
+    ax, ay = a
+    bx, by = b
+    cx, cy = c
+    abc_determinant = (
+        (bx - ax) * (cy - ay)
+        - (by - ay) * (cx - ax)
+    )
+    if abc_determinant == 0:
+        raise ValueError("A degenerate triangle has no circumcircle")
+
 #Calculate whether point D is inside the circumcircle of triangle ABC
 #Takes in four sets of coordinates and returns True or False
 #In use the four first points should remain the same while the fourth one is the point wer test and cycle through
@@ -24,22 +35,16 @@ def is_point_in_circumcircle(a:tuple[float, float], b:tuple[float, float], c:tup
     cx, cy = c
     dx, dy = d
 
-    abc_determinant = (
-        (bx - ax) * (cy - ay)
-        - (by - ay) * (cx - ax)
-    )
-    if abc_determinant == 0:
-        raise ValueError("A degenerate triangle has no circumcircle")
-
-    # Back to the drawing board, this didn't work:
-    # det = ((ax * (by - cy) + bx * (cy - ay) + cx * (ay - by)) * (dx**2 + dy**2)
-    # - (ax**2 + ay**2) * (by - cy)
-    # - (bx**2 + by**2) * (cy - ay)
-    # - (cx**2 + cy**2) * (ay - by))
-    
+    # TODO: What if it ends up checking the same triangle 1000 times? This needs to end up somewhere else.
+    # Check for degenerate triangle
+    try:
+        check_degeneracy(a, b, c)
+    except ValueError as e:
+        raise ValueError("Degenerate triangle: " + str(e))
 
     # https://ianthehenry.com/posts/delaunay/    
     # Calculate the coordinate differences between the points
+    
     adx = ax - dx
     ady = ay - dy
 

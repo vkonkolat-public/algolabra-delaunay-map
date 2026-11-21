@@ -6,9 +6,6 @@ import matplotlib.pyplot as plt
 import triangulate
 from konkomesh import KonkoMesh
 
-#TODO: Selvitä oliko kommentointi englanniksi or in finnish
-#TODO: Mieti rajoja sekä liukulukujen osalta että muiden arvojen osalta. Superkolmiot, pisteiden määrä, jne.
-
 # Wikipedian pseudokoodi algoritmin implementoinnin tueksi:
 # function BowyerWatson (pointList)
 #     // pointList is a set of coordinates defining the points to be triangulated
@@ -33,14 +30,6 @@ from konkomesh import KonkoMesh
 #         if triangle contains a vertex from original super-triangle
 #             remove triangle from triangulation
 #     return triangulation
-
-
-# Edustaa joukkoa pisteitä ja niiden välisiä särmiä
-# Pisteet ovat 2D-koordinaatteja (x, y) ja särmät ovat indeksejä pisteiden listassa.
-# Kolmiot ovat kolmen pisteen indeksejä, jotka muodostavat kolmion.
-
-# All the elegant solutions I've looked up use flat arrays and pointer arithmetic
-# TODO: Implement a more elegant solution with half-edges and a proper data structure for the mesh
 
 # Technically this must hold up to 100 000 points.... plenty of work ahead
 def create_test_points(num_points: int, width: int, height: int) -> list[tuple[float, float]]:
