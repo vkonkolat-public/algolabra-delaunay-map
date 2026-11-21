@@ -86,3 +86,17 @@ def test_improper_input_too_many_parameters():
             (0.5, 0.5),
             (1, 1),  # Extra parameter
         )
+
+# Tests for the get_orientation logic
+# TODO: imp0lemment checking for colinear point errors
+def test_get_orientation_with_collinear_points():
+    from src.triangulate import get_orientation
+    assert get_orientation((0, 0), (1, 1), (2, 2)) == 0  # Collinear points
+
+def test_get_orientation_with_counterclockwise_points():
+    from src.triangulate import get_orientation
+    assert get_orientation((0, 0), (1, 0), (0, 1)) == 1  # Counterclockwise points
+
+def test_get_orientation_with_clockwise_points():
+    from src.triangulate import get_orientation
+    assert get_orientation((0, 0), (0, 1), (1, 0)) == -1  # Clockwise points
