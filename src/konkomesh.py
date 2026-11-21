@@ -1,8 +1,13 @@
 # KonkoMesh class is for representing a mesh of triangles, edges, and vertices in 2D space.
+# Doesn't innately enforce delaunay triangulation, it's just a data structure
+# Meaning the functionality allows for adding overlapping triangles, lone points and so on
 class KonkoMesh:
     def __init__(self, points: list[tuple[float, float]]):
-        self.vertices = points  # Lista pisteistä (vertices)
-        self.edges = []     # Lista särmistä (edges) TODO: Muuta puolittaisiksi särmiksi (half-edges)
+        self.vertices = []  # Lista pisteistä (vertices), NOTE TO BRAIN: couldn't use set because need to preserve order and indexing
+        for point in points:
+            self.add_vertex(point)
+        self.edges: list[tuple[int, int]] = []     # list of edges in tuple format (v1, v2) TODO: Muuta puolittaisiksi särmiksi (half-edges)
+        # TODO: edges don't currently have orientation or care if the vertices exist
         self.triangles = []  # Lista kolmioista (triangles)
         pass
     

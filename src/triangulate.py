@@ -1,19 +1,21 @@
-# def get_orientation(a:tuple[float, float], b:tuple[float, float], c:tuple[float, float]) -> int:
-#     # Calculate the orientation of the triangle formed by points a, b, and c
-#     # Returns 1 if counterclockwise, -1 if clockwise, and 0 if collinear
-#     ax, ay = a
-#     bx, by = b
-#     cx, cy = c
+# TODO: Currently contains a lot of deprecated code in comments, do not remove before stashing to a support moduel
 
-#     # Calculate the determinant (cross product)
-#     det = (bx - ax) * (cy - ay) - (by - ay) * (cx - ax)
+def get_orientation(a:tuple[float, float], b:tuple[float, float], c:tuple[float, float]) -> int:
+    # Calculate the orientation of the triangle formed by points a, b, and c
+    # Returns 1 if counterclockwise, -1 if clockwise, and 0 if collinear
+    ax, ay = a
+    bx, by = b
+    cx, cy = c
 
-#     if det > 0:
-#         return 1  # Counterclockwise
-#     elif det < 0:
-#         return -1  # Clockwise
-#     else:
-#         return 0  # Collinear
+    det = (bx - ax) * (cy - ay) - (by - ay) * (cx - ax)
+
+    if det > 0:
+        return 1
+    if det < 0:
+        return -1
+    # TODO: Cause a server panic or something is they are colinear and send it up the chain to fail safely
+    # raise ValueError("Points are collinear, can't triangulate this shit")
+    return 0
 
 def check_degeneracy(a:tuple[float, float], b:tuple[float, float], c:tuple[float, float]):
     ax, ay = a
@@ -44,7 +46,7 @@ def is_point_in_circumcircle(a:tuple[float, float], b:tuple[float, float], c:tup
 
     # https://ianthehenry.com/posts/delaunay/    
     # Calculate the coordinate differences between the points
-    
+
     adx = ax - dx
     ady = ay - dy
 
