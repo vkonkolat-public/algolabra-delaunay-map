@@ -1,6 +1,11 @@
 import matplotlib.pyplot as plt
 import random
-from konkomesh import KonkoMesh
+
+# NOTE: Katso myöhemmin mikä tämä import practice on. Autoehdotettu testien korjauksen yhteydessä.
+if __package__:
+    from .konkomesh import KonkoMesh
+else:
+    from konkomesh import KonkoMesh
 
 
 # Creates a set of test points, later to be integrated to testing framework.

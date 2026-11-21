@@ -42,3 +42,6 @@ Viitataanko sillä yksinomaan suoraan muualta kopioituun tai toisen ihmisen teke
 
 
 ## Ajankäyttö
+- Noin 2 tuntia tiedonhakuun
+- 4 tuntia ohjelmointiin
+- 6 tuntia debuggaukseen ja ihmettelyyn

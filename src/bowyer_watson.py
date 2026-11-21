@@ -28,13 +28,29 @@
 
 
 
-import triangulate
-from konkomesh import KonkoMesh
-import matlib_visualiser
+if __package__:
+    from . import triangulate
+    from .konkomesh import KonkoMesh
+    from . import matlib_visualiser
+else: # pragma: no cover
+    import triangulate
+    from konkomesh import KonkoMesh
+    import matlib_visualiser
 
 def set_up_super_triangle(points: list[tuple[float, float]]) -> list[tuple[float, float]]:
+    # Dunno if this boilerplate is really needed since the function calling it vets the points variable
+    # TODO: Check if this test is actually useful in any manner
     if not points:
         return []
+    if not isinstance(points, list):
+        raise TypeError("points must be a list of (x, y) tuples")
+    for point in points:
+        if (
+            not isinstance(point, tuple)
+            or len(point) != 2
+            or not all(isinstance(coordinate, (int, float)) for coordinate in point)
+        ):
+            raise TypeError("points must be a list of (x, y) tuples")
 
     # Find the bounding box of the points
     min_x = min(point[0] for point in points)
@@ -55,6 +71,9 @@ def set_up_super_triangle(points: list[tuple[float, float]]) -> list[tuple[float
     return [p1, p2, p3]
 
 def add_single_point_to_mesh(mesh: KonkoMesh, point: tuple[float, float]) -> None:
+    mesh.add_vertex(point)
+    point_index = len(mesh.get_vertices()) - 1
+
     # Step 1: Find all triangles that are no longer valid due to the insertion of the new point
     bad_triangles = []
     for triangle in mesh.get_triangles():
@@ -86,7 +105,7 @@ def add_single_point_to_mesh(mesh: KonkoMesh, point: tuple[float, float]) -> Non
 
     # Step 4: Re-triangulate the polygonal hole
     for edge in polygon:
-        new_triangle = (edge[0], edge[1], len(mesh.get_vertices()) - 1)
+        new_triangle = (edge[0], edge[1], point_index)
         mesh.add_triangle(new_triangle)
 
 def bowyer_watson(points: list[tuple[float, float]]) -> KonkoMesh:
@@ -105,7 +124,6 @@ def bowyer_watson(points: list[tuple[float, float]]) -> KonkoMesh:
 
     # Step 1: Add each point to the mesh
     for point in points:
-        mesh.add_vertex(point)
         add_single_point_to_mesh(mesh, point)
 
     # Step 2: Remove triangles that contain vertices of the super triangle

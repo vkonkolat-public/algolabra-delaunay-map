@@ -12,9 +12,13 @@ Toiminnallisuus 2026-11-21 rajoittuu ei trianguloidun pistesarjan pisteiden väl
 - uv sync
 
 # Testaus 
-run "pytest src" at the root of the folder
+- run "pytest src" at the root of the folder
+
+## Coverage
+- coverage run --branch -m pytest src
+- coverage report -m         
 
 ## Manual visual testing
-src\tests\circumcircle_test_visual to be run MANUALLY and visually appraised 
-src\matlib_visualiser.py shows a visual when ran manually to indicate output behaviour
-src\bowyer_watson.py for a visual check of a generated triangulated mesh.
+- src\tests\circumcircle_test_visual to be run MANUALLY and visually appraised 
+- src\matlib_visualiser.py shows a visual when ran manually to indicate output behaviour
+- src\bowyer_watson.py for a visual check of a generated triangulated mesh.
