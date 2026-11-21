@@ -24,6 +24,13 @@ def is_point_in_circumcircle(a:tuple[float, float], b:tuple[float, float], c:tup
     cx, cy = c
     dx, dy = d
 
+    abc_determinant = (
+        (bx - ax) * (cy - ay)
+        - (by - ay) * (cx - ax)
+    )
+    if abc_determinant == 0:
+        raise ValueError("A degenerate triangle has no circumcircle")
+
     # Back to the drawing board, this didn't work:
     # det = ((ax * (by - cy) + bx * (cy - ay) + cx * (ay - by)) * (dx**2 + dy**2)
     # - (ax**2 + ay**2) * (by - cy)
@@ -62,57 +69,6 @@ def is_point_in_circumcircle(a:tuple[float, float], b:tuple[float, float], c:tup
 
     # When A, B, C are sorted in a counterclockwise order, this determinant is positive only if D lies inside the circumcircle.
     # If the point D is exactly on the circumcircle, det will be zero alongside other kind of nasty behaviour.
-    if __name__ == "__main__":
-        print(f"Determinant: {det}")
     return det > 0
 
 #TODO: Cough up something that produces the circumcenter and radius of the circumcircle, but can it be done without square roots?
-
-
-# Bunch of tests
-# C
-# |\
-# | \
-# |  \
-# | D \
-# |    \
-# A-----B
-if __name__ == "__main__":
-    A = (0, 0)
-    B = (1, 0)
-    C = (0, 1)
-    D = (0.5, 0.5)  # This point is inside the circumcircle of triangle ABC
-    print(f"\nUsed tuples: A={A}, B={B}, C={C}, D={D}, should return True")
-
-    if is_point_in_circumcircle(A, B, C, D):
-        print("True, Point D is inside the circumcircle of triangle ABC.")
-    else:
-        print("False, Point D is outside the circumcircle of triangle ABC.")
-
-    print()
-
-    E = (0, 0)
-    F = (1, 0)
-    G = (0, 1)
-    H = (0.5, 2.5)  # This point is outside ABC
-    print(f"Used tuples: E={E}, F={F}, G={G}, H={H}, should return False")
-
-    if is_point_in_circumcircle(E, F, G, H):
-        print("True, Point H is inside the circumcircle of triangle EFG.")
-    else:
-        print("False, Point H is outside the circumcircle of triangle EFG.")
-
-    print()
-
-    #Now let's flip the triangle so that the points are in clockwise order and see if the function still works, it should return False
-    I = (0, 0)
-    J = (0, 1)
-    K = (1, 0)
-    L = (0.5, 0.5)  # This point is inside the circumcircle of triangle IJK
-    print(f"Used tuples: I={I}, J={J}, K={K}, L={L}, should return False because the triangle is in clockwise order")
-
-    if is_point_in_circumcircle(I, J, K, L):
-        print("True, Point L is inside the circumcircle of triangle IJK.")
-    else:
-        print("False, Point L is outside the circumcircle of triangle IJK.")
-    print()
