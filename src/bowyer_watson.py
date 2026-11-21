@@ -128,6 +128,7 @@ def bowyer_watson(points: list[tuple[float, float]]) -> KonkoMesh:
     return mesh
 
 def main() -> None:
+    # internal printing test cases
     test_cases = [
         ([], 0),
         ([(0, 0)], 0),
@@ -145,6 +146,9 @@ def main() -> None:
         print(f"Points: {points}")
         print(mesh)
 
+    # visualisation test case
+    # As of 2026-11-21 produces a stable triangulation for 10 points without visual glitches and no crashes.abs
+    # No stress tetsts for perverse behaviour done yet, TODO: maybe 1000 points looking for abnormal exit
     random_points = matlib_visualiser.create_test_points(10, 100, 100)
     mesh = bowyer_watson(random_points)
     matlib_visualiser.matlib_visualisation(mesh)

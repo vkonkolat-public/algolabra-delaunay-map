@@ -12,29 +12,29 @@ The goal is to implement a 2D Delaunay triangulation with the Bowyer–Watson al
 
 ## Phase 1 — Scope and design
 
-- [ ] Keep the first implementation 2D and focused on Bowyer–Watson; defer 3D.
-- [ ] Define a point type and a triangle representation, including how triangle edges are represented and compared.
-- [ ] Decide and document the public input/output format and behavior for empty or invalid input.
-- [ ] Decide how duplicate points are handled and how cocircular cases are resolved deterministically.
-- [ ] Find and record reliable references for the algorithm and robust geometric predicates. Treat the existing Wikipedia pseudocode as an outline, not an implementation specification.
+- [x] Keep the first implementation 2D and focused on Bowyer–Watson; defer 3D.
+- [x] Define a point type and a triangle representation, including how triangle edges are represented and compared.
+- [x] Decide and document the public input/output format and behavior for empty or invalid input.
+- [x] Decide how duplicate points are handled and how cocircular cases are resolved deterministically.
+- [x] Find and record reliable references for the algorithm and robust geometric predicates. Treat the existing Wikipedia pseudocode as an outline, not an implementation specification.
 - [ ] Set up a small deterministic test dataset and make insertion order reproducible.
 
 ## Phase 2 — Geometry primitives
 
-- [ ] Implement orientation (signed area) and use it to normalize triangles to counterclockwise order.
-- [ ] Implement an in-circle predicate for testing whether a point lies inside a triangle's circumcircle.
+- [x] Implement orientation (signed area) and use it to normalize triangles to counterclockwise order.
+- [x] Implement an in-circle predicate for testing whether a point lies inside a triangle's circumcircle.
 - [ ] Define consistent behavior for points on an edge or circumcircle and for zero-area triangles.
 - [ ] Add unit tests for each predicate, including reversed orientation, points on boundaries, and large and small coordinate values.
 - [ ] Document the chosen numeric representation and known precision limitations; investigate more robust predicates if tests expose instability.
 
 ## Phase 3 — Bowyer–Watson baseline
 
-- [ ] Calculate a super-triangle that contains every input point and document how its size is chosen.
-- [ ] Start with the super-triangle and insert points one at a time.
-- [ ] For each insertion, find the triangles whose circumcircles contain the point.
-- [ ] Find the cavity boundary by counting undirected edges of the removed triangles; retain edges occurring exactly once.
-- [ ] Remove the cavity triangles and connect each boundary edge to the inserted point, skipping zero-area triangles.
-- [ ] Remove all triangles that contain a super-triangle vertex before returning the result.
+- [x] Calculate a super-triangle that contains every input point and document how its size is chosen.
+- [x] Start with the super-triangle and insert points one at a time.
+- [x] For each insertion, find the triangles whose circumcircles contain the point.
+- [x] Find the cavity boundary by counting undirected edges of the removed triangles; retain edges occurring exactly once.
+- [x] Remove the cavity triangles and connect each boundary edge to the inserted point, skipping zero-area triangles.
+- [x] Remove all triangles that contain a super-triangle vertex before returning the result.
 - [ ] Add focused tests for one point, a triangle, interior points, hull points, and points inserted in different orders.
 
 ## Phase 4 — Correctness and edge cases

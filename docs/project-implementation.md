@@ -26,15 +26,20 @@ Pääohjelma saa syötteeksi tai sen avulla valitaan joukko pisteitä.
 - Dokumentaation muotoilussa, varsinkin aika- ja tilavaatimuksien osalta (tarkistuksen mukaan täsmää wikipedian kanssa, testeistä lisää myöhemmin)
 - suunnittelussa ja tiedonhaussa 
 - gpt-6-luna mallia käyetetty roadmapissa
+- bugien metsästyksessä
+- agenttisia ominaisuuksia EI ole käytetty koko työn tekemiseen 
+
 ## Testausvaihe
 - matplotlib tai vastaavaa välittömän visualisaation käyttöön ottamiseen oman käyttöliittymän puuttuessa
 - MATLAB lisenssi ja sen delaunay-algoritmi verrokkina ja luotettavana lopputuloksen tarkistajana
 
 ## Testilaajennukset
+- Testauksessa käytetään paljon visuaalista esitystä joka vaatii nykyisellään moduulien manuaalista ajoa
 - Matlabin python-moduuli käyttöön testien sisällä
 - Oman algoritmin ja matlabin delaunay-algoritmin suorituskyvyn ja jalanjälkien vertailu
 
 ## Lähteet
-Kaiva sen kirjan nimi Helkasta
-Wikipedia delaunay, watson etc.
-https://ianthehenry.com/posts/delaunay/ <-- lisää waybackmachine
+- Kaiva sen kirjan nimi Helkasta
+- Wikipedia delaunay, watson etc.
+- https://ianthehenry.com/posts/delaunay/ <-- lisää waybackmachine
+- https://people.csail.mit.edu/indyk/6.838-old/handouts/lec9.pdf
